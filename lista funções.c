@@ -21,16 +21,20 @@ int calcAprovacao(float n1, float n2, float n3){
 	if (media >= 7){
 		return 1;
 	}
+	
 	return 0;
 }
 
 int divisoresNum(int n){
 	int i, divisores=1;
-	for(i = 1; i < sqrt(n); i++){
+	
+	for(i = 1; i < n; i++){
 		if (!(n%i)){
+			printf("%d ", i);
 			divisores++;
 		}
 	}
+	
 	return divisores;
 }
 
@@ -70,7 +74,7 @@ int fibonacciRecur(int n){
 }
 
 int main() {
-	printf("%d", fibonacciRecur(10));
+	printf("%d", divisoresNum(1000));
 	
 	return 0;
 }
