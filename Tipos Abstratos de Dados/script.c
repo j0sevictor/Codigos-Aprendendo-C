@@ -1,4 +1,4 @@
-#include "tListaInt"
+#include "tListaInt.c"
 
 int main(){
     tListaInt lista = initVetInt(7);
