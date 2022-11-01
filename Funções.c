@@ -2,7 +2,6 @@
 #include <math.h>
 
 int somaDeInteiros(int n){
-	
 	if (!n){
 		return 0;
 	}
@@ -87,7 +86,7 @@ int ePrimo(int n){
 int inversoInt(int n){
 	
 	int x = n;
-	int m = 0; // Variável para receber o inverso de n
+	int m = 0; // Variï¿½vel para receber o inverso de n
 	
 	while (x){
 		m = m * 10 + x % 10;
