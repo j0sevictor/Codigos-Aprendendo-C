@@ -2,10 +2,9 @@
 #include <math.h>
 
 int somaDeInteiros(int n){
-	if (!n){
-		return 0;
+	if (n == 1){
+		return 1;
 	}
-	
 	return n + somaDeInteiros(n-1); 
 }
 
@@ -106,6 +105,16 @@ int mdc(int a, int b){
 	}
 	return a;
 }
+
+int somatorio(int n){
+	if (n == 1){
+		return 1;
+	}else{
+		return n + somatorio(n-1);
+	}
+}
+
+
 
 int main(){
 	
