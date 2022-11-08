@@ -18,7 +18,7 @@ int main(){
     int cont = 0;
 
     for (i = 1; i <= 1000; i++){
-        if(i % 2 == 0 || i % 5 == 0 || eQuad(i)){
+        if(i % 5 == 0 || i % 7 == 0 || i % 3 == 0){
             cont++;
         }
     }
