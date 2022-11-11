@@ -51,3 +51,74 @@ void incluirFim(tLista* lista, tInfo info){
     lista->marcador = no;
     lista->tam++;
 }
+
+void excuir(tLista* lista, int pos){
+    tNo *auxA, *auxB;
+    int i;
+    
+    if (pos < 0 || pos >= lista->tam){
+        return;
+    }
+
+    auxA = lista->primeiro;
+    for (i = 0; i < pos; i++){
+        auxB = auxA;
+        auxA = auxA->proximo;
+    }
+
+    if (auxA != lista->primeiro){
+        auxB->proximo = auxA->proximo;
+        if (auxA == lista->ultimo){
+            lista->ultimo = auxB;
+        }
+    }else{
+        lista->primeiro = auxA->proximo;
+        if (auxA == lista->ultimo){
+            lista->ultimo = auxA->proximo;
+        }
+    }
+
+    lista->marcador = NULL;
+    lista->tam--;
+    free(auxA);
+}
+
+void primeiro(tLista* lista){
+    lista->marcador = lista->primeiro;
+}
+
+void proximo(tLista* lista){
+    if (lista->marcador != NULL){
+        lista->marcador = lista->marcador->proximo;
+    }
+}
+
+void imprimir(tLista* lista){
+    tInfo x;
+    int termoInfo = 0;
+
+    primeiro(lista);
+    while (!final(lista)){
+        termoInfo = obterInfo(lista, &x);
+        if(termoInfo){
+            imprimeInfo(x);
+        }
+        proximo(lista);
+    }
+}
+
+void destroi(tLista* lista){
+    tNo* aux;
+
+    primeiro(lista);
+    while (!final(lista)){
+        aux = lista->marcador;
+        proximo(lista);
+        free(aux);
+    }
+
+    lista->primeiro = NULL;
+    lista->marcador =NULL;
+    lista->ultimo = NULL;
+    lista->tam = 0;
+}
