@@ -1,11 +1,5 @@
 #include <stdlib.h>
-#include <stdio.h>
-
-typedef int tInfo;
-
-void imprimeInfo(tInfo info){
-    printf("Elemento: %d\n", info);
-}
+#include "tInfo.h"
 
 typedef struct no {
     tInfo info;

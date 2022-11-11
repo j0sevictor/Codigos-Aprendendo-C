@@ -36,10 +36,10 @@ int obterTam(tLista* lista){
     return lista->tam;
 }
 
-void incluirFim(tLista* lista, tInfo info){
+void incluirFim(tLista* lista, tInfo* info){
     tNo* no;
 
-    no = criaNo(info);
+    no = criaNo(*info);
 
     if (vazia(lista)){
         lista->primeiro = no;
@@ -48,6 +48,22 @@ void incluirFim(tLista* lista, tInfo info){
     }
     
     lista->ultimo = no;
+    lista->marcador = no;
+    lista->tam++;
+}
+
+void incluirInicio(tLista* lista, tInfo* info){
+    tNo* no;
+
+    no = criaNo(*info);
+
+    if(vazia(lista)){
+        lista->ultimo = no;
+    }else{
+        no->proximo = lista->primeiro;
+    }
+
+    lista->primeiro = no;
     lista->marcador = no;
     lista->tam++;
 }
