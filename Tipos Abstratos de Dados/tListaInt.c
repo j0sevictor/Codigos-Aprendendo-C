@@ -1,7 +1,7 @@
 #include <stdio.h>
 #define TAM 100
 
-typedef struct {
+typedef struct  {
     int vet[TAM];
     int lenVet;
 } tListaInt;
