@@ -12,7 +12,7 @@ void lowerCase(char *palavra, int tam){
     }
 }
 
-int ePalindromo(char* palavra, int tam){
+int ePalindromo(char *palavra, int tam){
     int i;
 
     lowerCase(palavra, tam);
