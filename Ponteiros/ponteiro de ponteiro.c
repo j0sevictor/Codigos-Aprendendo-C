@@ -7,8 +7,8 @@ int** matrizPont(int i, int j){
     
     mat = (int**) malloc(i * sizeof(int*));
 
-    for (n = 0; n < i; i++){
-        mat[i] = (int*) malloc(j * sizeof(int));
+    for (n = 0; n < i; n++){
+        mat[n] = (int*) malloc(j * sizeof(int));
     }
     
     return mat; 
