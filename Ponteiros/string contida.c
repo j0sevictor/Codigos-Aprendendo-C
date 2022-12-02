@@ -12,22 +12,24 @@ void lowerCase(char *palavra, int tam){
     }
 }
 
-int contido(char *p, char *p2, int tam1, int tam2){
+int estaContidoEm(char *palavra, char *palavra2, int tam1, int tam2){
     int i, j = 0;
 
-    lowerCase(p, tam1);
-    lowerCase(p2, tam2);
+    if (tam1 >= tam2){
+        lowerCase(palavra, tam1);
+        lowerCase(palavra2, tam2);
 
-    for (i = 0; i < tam1; i++){
-        if (p[i] == p2[j]){
-            j++;
-            if(j == tam2){
-                return 1;
+        for (i = 0; i < tam1; i++){
+            if (palavra[i] == palavra2[j]){
+                j++;
+                if(j == tam2){
+                    return 1;
+                }
+            }else if(palavra2[0] == palavra[i]){
+                j = 1;
+            }else{
+                j = 0;
             }
-        }else if(p2[0] == p[i]){
-            j = 1;
-        }else{
-            j = 0;
         }
     }
 
@@ -43,9 +45,9 @@ int main(){
     printf("DIGITE A PALAVRA 2: \n");
     scanf("%s", palavra2);
 
-    int cont = contido(palavra1, palavra2, strlen(palavra1), strlen(palavra2));
+    int contido = estaContidoEm(palavra1, palavra2, strlen(palavra1), strlen(palavra2));
 
-    if (cont){
+    if (contido){
         printf("ESTA CONTIDO\n");
     }else{
         printf("NAO ESTA CONTIDO\n");
