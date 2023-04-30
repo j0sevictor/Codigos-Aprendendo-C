@@ -1,19 +1,6 @@
-#include <stdio.h>
 
 void mergeVectors(int *vector, int inicio, int meio, int fim);
 void mergeSort(int *vector, int inicio, int meio, int fim);
-
-int main()
-{
-    int vetor[10] = {1, 5, 8, 1, 20, 15, 0, 3, 36};
-    mergeSort(vetor, 0, 4, 8);
-
-    int i;
-    for (i = 0; i < 9; i++)
-    {
-        printf("%d ", vetor[i]);
-    }
-}
 
 void mergeSort(int *vector, int inicio, int meio, int fim)
 {
