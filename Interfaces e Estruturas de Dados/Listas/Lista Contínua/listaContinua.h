@@ -11,7 +11,7 @@ typedef struct lista
 } tLista;
 
 // Protótipo das funções
-int criarLista(tLista *lista, int tamanho);
+tLista* criarLista(int tamanho);
 int excluirLista(tLista *lista);
 
 int addElementoInicio(tLista *lista, int valor);
@@ -23,32 +23,39 @@ int listaVazia(tLista *lista);
 int listaCheia(tLista *lista);
 
 elemento getElementoENext(tLista *lista);
-elemento getElemento(tLista *lista, int i);
+elemento getElementoIndice(tLista *lista, int i)
+elemento getElemento(tLista *lista);
 void resetIndex(tLista *lista);
 void finalIndex(tLista *lista);
 
 // Funções de Criação e Exclusão de Listas
-int criarLista(tLista *lista, int tamanho)
+tLista* criarLista(int tamanho)
 {
-    lista->elem = (elemento*) malloc(tamanho * sizeof(elemento));
-    if (lista->elem != NULL)
+    tLista* lista = (tLista*) malloc(sizeof(tLista));
+    if (lista != NULL)
     {
-        lista->tamanho = tamanho;
-        lista->qtdElementos = 0;
-        lista->i = 0;
-        return 1;
+        lista->elem = (elemento*) malloc(tamanho * sizeof(elemento));
+        if (lista->elem != NULL)
+        {
+            lista->tamanho = tamanho;
+            lista->qtdElementos = 0;
+            lista->i = 0;
+            return lista;
+        }
+        else
+        {
+            free(lista);
+        }
     }
 
-    return 0;
+    return NULL;
 }
 
 int excluirLista(tLista *lista)
 {
     if (!listaVazia(lista)){
         free(lista->elem);
-        lista->qtdElementos = 0;
-        lista->tamanho = 0;
-        lista->i = 0;
+        free(lista);
         return 1;
     }
     return 0;
@@ -162,7 +169,12 @@ elemento getElementoENext(tLista *lista)
     return elem;
 }
 
-elemento getElemento(tLista *lista, int i)
+elemento getElementoIndice(tLista *lista, int i)
 {
     return lista->elem[i];
+}
+
+elemento getElemento(tLista* lista)
+{
+    return lista->elem[lista->i];
 }
