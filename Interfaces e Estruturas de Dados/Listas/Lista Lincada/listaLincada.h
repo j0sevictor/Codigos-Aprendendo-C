@@ -46,10 +46,11 @@ tListaLincada* criarLista()
 void freeLista(tListaLincada* lista)
 {
     tNo* aux;
-    while (!listaVazia(lista))
+    while (!lista->primeiro != NULL)
     {
         aux = lista->primeiro;
         lista->primeiro = aux->next;
+        lista->qtdElementos--;
         free(aux);
     }
 
@@ -130,7 +131,7 @@ void indexFinal(tListaLincada* lista)
 
 void indexProximo(tListaLincada* lista)
 {
-    if (lista->index == NULL)
+    if (final(lista))
     {
         indexInicio(lista);
     }
